@@ -22,7 +22,7 @@ answer=input("Enter Yes or No...")
 if answer == 'No':
     print("Well then, please exit this screen and log out. You will automatically be deleted from the organization's list of members. Enjoy your robber-free life, but do remember if any notice about the existence of this organization is being spread around, we WILL come to your house and INTERROGATE you. It won't be pretty. Now where were we?... Oh yes, Have a nice day!")
 elif answer == 'Yes':
-    print(f"That's what I like to hear. I can tell already Agent{x} that you have potential to be the next world-class spy!")
+    print(f"That's what I like to hear. I can tell already, Agent {x}, that you have potential to be the next world-class spy!")
 
 
 
