@@ -46,13 +46,15 @@ class Supplies(object):
         self.rope = 100
         self.weapons = 100
         self.nightvision = 100
+        self.jemscollected = 0
 
-    def go_down(self):
+    def change(self):
         self.flashlight -= 25
-        self.food -= 10
+        self.energy -= 10
         self.rope -= 50
         self.weapons -= 30
         self.nightvision -= 25
+        self.jemscollected += 25
 
 full_bag = Supplies()
 
@@ -74,6 +76,29 @@ if first_move == 'North Room':
     print("I love being listened to! Trust me kid, this will get you far. TO THE NORTH ROOM YOU GO!")
 
     print("*Transition--- North Room*")
+    print("Ok from here on out you will be walking around on your own, but don't worry because I will be giving you hints and advice through a walkie talkie. In this room all you have to do is just walk in, grab the jem, and walk out. Easy peasy lemon squeezy. You may begin.")
+    print_slow("...\n...\n...")
+    b= input("To continue, press enter...")
+    print("*right in front of the jem*")
+    c= input("To continue, press enter...")
+    trivia_one= input("See, that wasn't so bad. But hey, do you seriously think me, practically a GOD, would allow you to walk away this easily? \nOF COURSE NOT! That is why throughout the mission I will be interjecting a few trivia questions. \nIf you get a question wrong, your energy will decrease by 10%... And here is question ONE!!!!\nWho is the only US president to serve more than two terms?\nA.Franklin Roosevelt\nB.Geaorge Washington\nC.Abraham Lincoln\nPlease only write down the capital letter:  ")
+    if trivia_one == 'A':
+        print("Well well well, someone is a genious in this room, show off. I guess I'll have to start making the trivia a bit harder. \nHere is the first of many jems... the turquoise jem! Isn't she a beauty ;)")
+        full_bag.change()
+        print("Percent of Jems collected in the mission:", full_bag.jemscollected)
+
+    elif trivia-one == 'B' or 'C':
+        print("WROOOOOONG... how stupid can you be? Hahahaha, well now you have less energy kid, keep this up and you die.")
+
+
+
+
+
+
+
+
+
+
 elif first_move == 'East Room':
     print("Ok, do it your way, but if you die or lose right at the start, I am just going to laugh... HAAA. TO THE EAST ROOM YOU GO!")
 
