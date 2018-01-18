@@ -54,7 +54,7 @@ class Supplies(object):
         self.flashlight -= 2
         self.rope -= 10
         self.chainsaw -= 100
-        self.nightvision -= 5
+        self.nightvision -= 1
         self.gemscollected += 25
 
 full_bag = Supplies()
@@ -157,10 +157,11 @@ if first_supply == 'a':
         print("Amount of night vision left:", full_bag.nightvision)
     print("You made it to the gem safe and sound without starting the alarm, CONGRATULATIONS! But, that is not the only thing you have to worry about. In order to grab ahold of the gem, you have to solve a trivia quesition.")
     print("--------------------------------------------------------------------------------------------------------------------")
-    trivia_one= input(East_room.riddle,"\nIs it: a. Thunderbird, Horned Serpent,Puckwudgie,and Wampus\nb. Ravenclaw,Horned Serpent,Puckwudgie,and Wampus\nc. Gryffindor,Ravenclaw,Hufflepuff,and Slytherin\nEnter only the letter: ")
+    print(East_room.riddle)
+    trivia_one= input("\nIs it: a. Thunderbird, Horned Serpent,Puckwudgie,and Wampus\nb. Ravenclaw,Horned Serpent,Puckwudgie,and Wampus\nc. Gryffindor,Ravenclaw,Hufflepuff,and Slytherin\nEnter only the letter: ")
     response_one= 'c'
     while trivia_one != response_one:
-        print("Do you live under a rock! Try it again: ")
+        trivia_one = input("Do you live under a rock! Try it again: ")
     print("Nice job! You solved the riddle, and now you have the second gem! Press ENTER to grab the gem.")
     h=input(" ")
     full_bag.change()
@@ -217,10 +218,11 @@ if second_supply == 'a':
         print("Amount of rope left:", full_bag.rope)
     print("You made it to the gem safe and sound without waking the security gaurd, CONGRATULATIONS! But, that is not the only thing you have to worry about. In order to grab ahold of the third gem, you have to solve yet another trivia quesition.")
     print("--------------------------------------------------------------------------------------------------------------------")
-    trivia_two= input(South_room.riddle,"\nIs it: a. twelve\nb. four\nc. two\nEnter only the letter: ")
+    print(South_room.riddle)
+    trivia_two= input("\nIs it: a. twelve\nb. four\nc. two\nEnter only the letter: ")
     response_two= 'b'
     while trivia_two != response_two:
-        print("Do you live under a rock! Try it again: ")
+        trivia_two = input("Do you live under a rock! Try it again: ")
     print("Nice job! You solved the riddle, and now you have the third gem! Press ENTER to grab the gem.")
     m=input(" ")
 
@@ -282,10 +284,11 @@ if third_supply == 'a':
         print("Amount of flashlgiht left:", full_bag.flashlight)
     print("You made it to the gem safe and sound without breaking any artifacts, CONGRATULATIONS! But, that is not the only thing you have to worry about. In order to grab ahold of the fourth gem, you have to solve yet another trivia quesition.")
     print("--------------------------------------------------------------------------------------------------------------------")
-    trivia_three= input(West_room.riddle,"\nIs it: a. Disneyland\nb. Hollywoodland\nc. Los Angeles Hollywood\nEnter only the letter: ")
+    print(West_room.riddle)
+    trivia_three= input("\nIs it: a. Disneyland\nb. Hollywoodland\nc. Los Angeles Hollywood\nEnter only the letter: ")
     response_three= 'b'
     while trivia_three != response_three:
-        print("Do you live under a rock! Try it again: ")
+        trivia_three = input("Do you live under a rock! Try it again: ")
     print("Nice job! You solved the riddle, and now you have the fourth gem! Press ENTER to grab the gem.")
     s=input(" ")
 
