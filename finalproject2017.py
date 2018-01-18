@@ -45,12 +45,14 @@ a= input(" ")
 class Supplies(object):
     def __init__(self):
         self.flashlight = 100
+        self.rope = 100
         self.chainsaw = 100
         self.nightvision = 100
         self.jemscollected = 0
 
     def change(self):
         self.flashlight -= 25
+        self.rope -= 10
         self.chainsaw -= 100
         self.nightvision -= 5
         self.jemscollected += 25
@@ -172,29 +174,86 @@ elif first_supply == 'b':
     if guess != secret_number:
         print(f"I guess you were a bit too risky for the first mission. I'm sorry agent {x}, but you know what this means...\n\n\n\n\n\nGAME OVER")
     elif guess == secret_number:
-        print("I don't know wether that was luck or you just being a pure genious, but here comes round two.Enter a number from 0 to 5 for your guess on the secret number: ")
+        print("I don't know wether that was luck or you just being a pure genious, but here comes round two: ")
         secret_number2= 5
         guess_two =  input("\nEnter a number from 0 to 5 for your guess on the secret number: ")
         if guess_two != secret_number2:
             print(f"I guess you were a bit too risky for the first mission. I'm sorry agent {x}, but you know what this means...\n\n\n\n\n\nGAME OVER")
         elif guess_two == secret_number2:
-            print("I don't know wether that was luck or you just being a pure genious, but here comes round two.Enter a number from 0 to 5 for your guess on the secret number: ")
+            print("I don't know wether that was luck or you just being a pure genious, but here comes round two: ")
             secret_number3 = 1
             guess_three = input("\nEnter a number from 0 to 5 for your guess on the secret number: ")
             if guess_three != secret_number3:
                 print(f"I guess you were a bit too risky for the first mission. I'm sorry agent {x}, but you know what this means...\n\n\n\n\n\nGAME OVER")
             elif guess_three == secret_number3:
-                print("I undersetimated your abilities. I always assume you will die but, you keep proving me wrong everytime. Keep up the good work.Press ENTER to grab the jem.")
+                print("I undersetimated your abilities. I always assume you will die but, you keep proving me wrong everytime. Keep up the good work.Press ENTER to grab the second jem.")
         i=input(" ")
         print("--------------------------------------------------------------------------------------------------------------------")
         full_bag.change()
         print("Percent of jems collected in the mission: ", full_bag.jemscollected)
 
+#Transition for the player to enter the South room
 print("--------------------------------------------------------------------------------------------------------------------")
 print("See, that wasn't so bad. Now, we have to head to the South room. Press ENTER to continue...")
 j=input(" ")
 print("--------------------------------------------------------------------------------------------------------------------")
 print("*Inside the South room*")
+print(South_room.description)
+k=input("Press enter to continue...")
+print("--------------------------------------------------------------------------------------------------------------------")
+
+#the player has to figure out how to get through the lasers
+second_supply= input("Do you want to use a supply from the bag to make sure you don't step on the loud floor and end up waking the security gaurd?\na.Yes\nb.No\nEnter the lowercase letter: ")
+if first_supply == 'a':
+    print("--------------------------------------------------------------------------------------------------------------------")
+    print("I would have chosen the same thing. The perfect supply to use in this type of situation is the ",South_room.supplies,"This is because there is a pully right at the center of the room which will allow you to hang the", South_room.supplies,"and swing you from one end of the room to the other.Genious idea right? Muaaaa,aka me, came up with it.")
+    print("The jem is only 8 steps away, so lets hope you have enough rope energy to get you there without the energy making it to 0%. Press ENTER to continue...")
+    print("--------------------------------------------------------------------------------------------------------------------")
+    l= input(" ")
+    for o in range(9):
+        full_bag.change()
+        print("Amount of rope left:", full_bag.rope)
+    print("--------------------------------------------------------------------------------------------------------------------")
+    print("You made it to the jem safe and sound without waking the security gaurd, CONGRATULATIONS! But, that is not the only thing you have to worry about. In order to grab ahold of the third jem, you have to solve yet another trivia quesition.")
+    print("--------------------------------------------------------------------------------------------------------------------")
+    trivia_two= input(South_room.riddle,"\nIs it: a. twelve\nb. four\nc. two\nEnter only the lowercase letter: ")
+    response_two= 'b'
+    while trivia_two != response_two:
+        print("Do you live under a rock! Try it again: ")
+    print("Nice job! You solved the riddle, and now you have the third jem! Press ENTER to grab the jem.")
+    m=input(" ")
+    print("--------------------------------------------------------------------------------------------------------------------")
+    full_bag.change()
+    print("Percent of jems collected in the mission: ", full_bag.jemscollected)
+
+elif second_supply == 'b':
+    print("--------------------------------------------------------------------------------------------------------------------")
+    print("Wow, you are one risky spy, but hey I respect that. I guess that means you will be on the edge of meeting an awake gaurd.")
+    print("--------------------------------------------------------------------------------------------------------------------")
+    print("In order to get through the room without making a noise, you have to guess the correct secret number three times in a row. If you don't, well...GAME OVER for you.")
+    secret_number4 = 8
+    guess_four = input("\nEnter a number from 5 to 10 for your guess on the secret number: ")
+    if guess_four != secret_number4:
+        print(f"I guess you were a bit too risky for the first mission. I'm sorry agent {x}, but you know what this means...\n\n\n\n\n\nGAME OVER")
+    elif guess_four == secret_number4:
+        print("I don't know wether that was luck or you just being a pure genious, but here comes round two: ")
+        secret_number5= 10
+        guess_five =  input("\nEnter a number from 5 to 10 for your guess on the secret number: ")
+        if guess_five != secret_number5:
+            print(f"I guess you were a bit too risky for the first mission. I'm sorry agent {x}, but you know what this means...\n\n\n\n\n\nGAME OVER")
+        elif guess_five == secret_number5:
+            print("I don't know wether that was luck or you just being a pure genious, but here comes round two: ")
+            secret_number6 = 7
+            guess_six = input("\nEnter a number from 5 to 10 for your guess on the secret number: ")
+            if guess_six != secret_number6:
+                print(f"I guess you were a bit too risky for the first mission. I'm sorry agent {x}, but you know what this means...\n\n\n\n\n\nGAME OVER")
+            elif guess_six == secret_number6:
+                print("I undersetimated your abilities. I always assume you will die but, you keep proving me wrong everytime. Keep up the good work.Press ENTER to grab the third jem.")
+        n=input(" ")
+        print("--------------------------------------------------------------------------------------------------------------------")
+        full_bag.change()
+        print("Percent of jems collected in the mission: ", full_bag.jemscollected)
+
 
 
 
