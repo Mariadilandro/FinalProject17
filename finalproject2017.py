@@ -51,7 +51,7 @@ class Supplies(object):
         self.jemscollected = 0
 
     def change(self):
-        self.flashlight -= 25
+        self.flashlight -= 2
         self.rope -= 10
         self.chainsaw -= 100
         self.nightvision -= 5
@@ -202,7 +202,7 @@ print(South_room.description)
 k=input("Press enter to continue...")
 print("--------------------------------------------------------------------------------------------------------------------")
 
-#the player has to figure out how to get through the lasers
+#the player has to figure out how to not wake up the security gaurd that is in the room sleeping
 second_supply= input("Do you want to use a supply from the bag to make sure you don't step on the loud floor and end up waking the security gaurd?\na.Yes\nb.No\nEnter the lowercase letter: ")
 if first_supply == 'a':
     print("--------------------------------------------------------------------------------------------------------------------")
@@ -254,6 +254,68 @@ elif second_supply == 'b':
         full_bag.change()
         print("Percent of jems collected in the mission: ", full_bag.jemscollected)
 
+
+#Transition for the player to enter the West room
+print("--------------------------------------------------------------------------------------------------------------------")
+print("See, that wasn't so bad. Now, we have to last room to head into....the West room. Press ENTER to continue...")
+p=input(" ")
+print("--------------------------------------------------------------------------------------------------------------------")
+print("*Inside the West room*")
+print(West_room.description)
+q=input("Press enter to continue...")
+print("--------------------------------------------------------------------------------------------------------------------")
+
+#the player has to figure out how to get through the room without dropping any vases
+third_supply= input("Do you want to use a supply from the bag to make sure you don't topple over an ancient artifact in the dark and cause a commotion that will get you into trouble?\na.Yes\nb.No\nEnter the lowercase letter: ")
+if third_supply == 'a':
+    print("--------------------------------------------------------------------------------------------------------------------")
+    print("I would have chosen the same thing. The perfect supply to use in this type of situation is the ",West_room.supplies,"It illuminates the path you are taking so you can see which direction you are heading in.")
+    print("The jem is really far, 40 steps to be precise.Let's hope you have enough flashlight energy to get you there before the energy makes it to 0%. Press ENTER to continue...")
+    print("--------------------------------------------------------------------------------------------------------------------")
+    r= input(" ")
+    for o in range(9):
+        full_bag.change()
+        print("Amount of flashlgiht left:", full_bag.flashlight)
+    print("--------------------------------------------------------------------------------------------------------------------")
+    print("You made it to the jem safe and sound without breaking any treasures, CONGRATULATIONS! But, that is not the only thing you have to worry about. In order to grab ahold of the fourth jem, you have to solve yet another trivia quesition.")
+    print("--------------------------------------------------------------------------------------------------------------------")
+    trivia_three= input(West_room.riddle,"\nIs it: a. Disneyland\nb. Hollywoodland\nc. Los Angeles Hollywood\nEnter only the lowercase letter: ")
+    response_three= 'b'
+    while trivia_three != response_three:
+        print("Do you live under a rock! Try it again: ")
+    print("Nice job! You solved the riddle, and now you have the fourth jem! Press ENTER to grab the jem.")
+    s=input(" ")
+    print("--------------------------------------------------------------------------------------------------------------------")
+    full_bag.change()
+    print("Percent of jems collected in the mission: ", full_bag.jemscollected)
+
+elif third_supply == 'b':
+    print("--------------------------------------------------------------------------------------------------------------------")
+    print("Wow, you are one risky spy, but hey I respect that. I guess that means you will be having to feel your way forward and through the dark.")
+    print("--------------------------------------------------------------------------------------------------------------------")
+    print("In order to get through the room without breaking anything, you have to guess the correct secret number three times in a row. If you don't, well...GAME OVER for you.")
+    secret_number7 = 14
+    guess_seven = input("\nEnter a number from 10 to 15 for your guess on the secret number: ")
+    if guess_seven != secret_number7:
+        print(f"I guess you were a bit too risky for the first mission. I'm sorry agent {x}, but you know what this means...\n\n\n\n\n\nGAME OVER")
+    elif guess_seven == secret_number7:
+        print("I don't know wether that was luck or you just being a pure genious, but here comes round two: ")
+        secret_number8= 13
+        guess_eight =  input("\nEnter a number from 10 to 15 for your guess on the secret number: ")
+        if guess_eight != secret_number8:
+            print(f"I guess you were a bit too risky for the first mission. I'm sorry agent {x}, but you know what this means...\n\n\n\n\n\nGAME OVER")
+        elif guess_eight == secret_number8:
+            print("I don't know wether that was luck or you just being a pure genious, but here comes round two: ")
+            secret_number9 = 11
+            guess_nine = input("\nEnter a number from 10 to 15 for your guess on the secret number: ")
+            if guess_nine != secret_number9:
+                print(f"I guess you were a bit too risky for the first mission. I'm sorry agent {x}, but you know what this means...\n\n\n\n\n\nGAME OVER")
+            elif guess_nine == secret_number9:
+                print("I undersetimated your abilities. I always assume you will die but, you keep proving me wrong everytime.And this time, it was the last jem of the mission! Press ENTER to grab the fourth jem.")
+        t=input(" ")
+        print("--------------------------------------------------------------------------------------------------------------------")
+        full_bag.change()
+        print("Percent of jems collected in the mission: ", full_bag.jemscollected)
 
 
 
