@@ -138,7 +138,7 @@ class Room(object):
 
 #gives the definition of each room using the classroom
 East_room = Room("The North room was a warm up, now the hard part begins. This room has invisible lasers which if you step on will be GAME OVER.","What are the four houses at Hogwarts School of Witchcraft and Wizardry?","Nightvision goggles")
-South_room = Room("If you thought the East room was hard, well this room is much worse. This room has a security gaurd protecting the gem. Fortunetly he fell asleep on the job (which is honestly something I would do too hahaha). You just have to make sure not to wake him up by stepping on creeky tiles.","How many chambers are there in a dog's heart?","Rope")
+South_room = Room("If you thought the East room was hard, well this room is much worse. This room has a security guard protecting the gem. Fortunetly he fell asleep on the job (which is honestly something I would do too hahaha). You just have to make sure not to wake him up by stepping on creeky tiles.","How many chambers are there in a dog's heart?","Rope")
 West_room = Room("Wow, I am truly impressed. This is a hard mission and look at you agent, you are at the end of this journey. Now, some say this is the most difficul room to complete. This is the storage room, which is soon to be another exhibit. It contains all the artifacts that will be used once the new exhibit is constructed, including the last gem.  You have to make sure not to knock any of the artifacts over in the dark.","What did the famous Hollywood sign, located in Los Angeles, originally say?","flashlight")
 
 #the player is now being transferred into the second room of the museum
@@ -222,7 +222,7 @@ k=input("Press enter to continue...")
 print("--------------------------------------------------------------------------------------------------------------------")
 
 #the player has to figure out how to not wake up the security gaurd that is sleeping in the room
-second_supply= input("Do you want to use a supply from the bag to make sure you don't step on the loud floor and end up waking the security gaurd?\na.Yes\nb.No\nEnter the letter: ")
+second_supply= input("Do you want to use a supply from the bag to make sure you don't step on the loud floor and end up waking the security guard?\na.Yes\nb.No\nEnter the letter: ")
 if second_supply == 'a':
     print("--------------------------------------------------------------------------------------------------------------------")
     print("I would have chosen the same thing. The perfect supply to use in this type of situation is the ",South_room.supplies,"This is because there is a pully right at the center of the room which will allow you to hang the", South_room.supplies,"and swing you from one end of the room to the other.Genious idea right? Muaaaa,aka me, came up with it.")
@@ -240,7 +240,7 @@ if second_supply == 'a':
     print("Percent amount of rope left: ",full_bag.rope-14)
     print("Percent amount of rope left: ",full_bag.rope-16)
 
-    print("You made it to the gem safe and sound without waking the security gaurd, CONGRATULATIONS! But, that is not the only thing you have to worry about. In order to grab ahold of the third gem, you have to solve yet another trivia quesition.")
+    print("You made it to the gem safe and sound without waking the security guard, CONGRATULATIONS! But, that is not the only thing you have to worry about. In order to grab ahold of the third gem, you have to solve yet another trivia quesition.")
     print("--------------------------------------------------------------------------------------------------------------------")
     print(South_room.riddle)
     trivia_two= input("\nIs it: a. twelve\nb. four\nc. two\nEnter only the letter: ")
@@ -381,7 +381,7 @@ elif third_supply == 'b':
 #the ending of the game, once all the gems have been collected
 
 print("--------------------------------------------------------------------------------------------------------------------")
-final_response= input(f"Can you hear that Agent {x}? I think it's the cops. They are coming in and trying to find you!\nWhich means of escape are you going to chose as the quickest?\na. hop out of the window and make a run for it\nb. find a place in the room to hide in and hopefully the cops don't see you\nc. sneak attack the police and make a run for it through the entrance of the museum\nd. give yourself into the cops\nenter only the letter: ")
+final_response= input(f"Can you hear that Agent {x}? I think it's the cops. They are coming in and trying to find you!\nWhich means of escape are you going to chose as the quickest?\na. hop out of the window and make a run for it\nb. find a place in the room to hide in and hopefully the cops don't see you\nc. sneak attack the police and then make a run for it\nd. give yourself up to the cops\nenter only the letter: ")
 
 if final_response == 'a':
     print("Now that's what I call the perfect way to escape. Hurry and jump out, the police are getting closer!Press ENTER to continue")
