@@ -1,3 +1,6 @@
+import sys
+
+
 #This variable allows the game to meet the player. It gives the agent in the game a name.
 x=input("Please insert your name: ")
 
@@ -30,6 +33,7 @@ print("Good, I can see you are capable of following directions.\nAnyways, my nam
 answer=input("Enter yes or no...")
 if answer == 'no':
     print("\nWell then coward, I see how it is. You will now automatically be deleted from the organization's list of members.I should have expected it, the life of a robber is not something an average perosn is capable of.\nEnjoy your robber-free life, but do remember if any news about the existence of this organization begins to spread, we WILL come to your house and INTERROGATE you. \nTrust me, it won't be pretty. \nNow where were we? Oh yes, Have a nice day!\n\n\n\n\n GAME OVER, LOSER")
+    sys.exit()
 elif answer == 'yes':
     print(f"\nThat's what I like to hear! I can tell already, Agent {x}, that you have potential to be the next world-class spy! \nThe address has been faxed to you; make sure to arrive at the exact location at 10:00 pm sharp.\n Whatever you do, DO NOT bring anyone else with you, including your pets (no matter how tempting it may seem to bring your cat)!")
 
@@ -51,11 +55,8 @@ class Supplies(object):
         self.gemscollected = 0
 
     def change(self):
-        self.flashlight -= 2
-        self.rope -= 10
-        self.chainsaw -= 100
-        self.nightvision -= 1
-        self.gemscollected += 25
+        self.gemscollected = 25
+
 
 full_bag = Supplies()
 
@@ -83,7 +84,7 @@ if open_lock == 'a':
     #allows the player to figure out the lock combination
     secret_number = 3
     print("--------------------------------------------------------------------------------------------------------------------")
-    guess = input("\nEnter a number from 0 to 20 for the lock's code: ")
+    guess = int(input("\nEnter a number from 0 to 20 for the lock's code: "))
     while guess != secret_number:
         guess = int(input("Is that seriously what you chose? Try again: "))
     print("Nice job, you picked the lock!Press ENTER to grab the first gem.")
@@ -98,21 +99,26 @@ elif open_lock == 'b':
     print("Oh so you think you're like what,a proffesional at this now? Hate to break it to you, but you aren't.")
     first_choice = input("So, what are you going to do then to pick the lock?\na. Umm... obviously use the chainsaw from my bag\nb. I'll just give up(if you do this, then you will lose the game)\nc. I'm starting to think actually that asking for a hint is a good idea\nEnter only the letter: ")
     if first_choice == 'a':
-        full_bag.change()
+
         print("--------------------------------------------------------------------------------------------------------------------")
         print("What a stupid decision.")
-        print("Percent of weaponry aka chainsaw source left to use in the mission: ", full_bag.chainsaw)
+        print("Percent of weaponry ak chainsaw source starting: ", full_bag.chainsaw)
+        print("Percent of weaponry aka chainsaw source left to use in the mission: ", full_bag.chainsaw-100)
         print("Well, looks like you got to 0% quickly. Sorry but you know what that means....\n\n\n\n\n\nGAME OVER")
+        sys.exit()
+
     elif first_choice == 'b':
         print("--------------------------------------------------------------------------------------------------------------------")
         print("So I guess for once my gut feeling was wrong about you. I thought you would be a great spy but never mind, you suck!\nYou can't even figure out how to pick a lock, guess that means:\n\n\n\n\n\nGAME OVER")
+        sys.exit()
+
     elif first_choice == 'c':
         print("--------------------------------------------------------------------------------------------------------------------")
         print("What a good decision!\nIt is rather simple to pick actually, all you have to do is guess the code, which is only ONE number you have to input!")
-        secret_number = 3
+        onesecret_number = 19
         guess = int(input("\nEnter a number from 0 to 20 for the lock's code: "))
-        while guess != secret_number:
-            guess = input("Is that seriously what you chose? Try again: ")
+        while guess != onesecret_number:
+            guess = int(input("Is that seriously what you chose? Try again: "))
         print("Nice job, you picked the lock! The door is opening for you and the first gem is right in there. Press ENTER to grab the gem.")
         d=input(" ")
         print("--------------------------------------------------------------------------------------------------------------------")
@@ -145,16 +151,21 @@ f=input("Press enter to continue...")
 print("--------------------------------------------------------------------------------------------------------------------")
 
 #the player has to figure out how to get through the lasers
-first_supply= input("Do you want to use a supply from the bag to make sure you don't step on a laser?\na.Yes\nb.No\nEnter the letter: ")
+first_supply= input("Do you want to use a supply from the bag to make sure you don't step on a laser?\na.Yes\nb.No\nRemember that either way you can beat this room\nEnter the letter: ")
 if first_supply == 'a':
     print("--------------------------------------------------------------------------------------------------------------------")
     print("I would have chosen the same thing. The perfect supply to use in this type of situation are the ",East_room.supplies)
-    print("The gem is 13 steps away, so lets hope you have enough nightgoggle energy to get you there without the energy going down to 0%. Press ENTER to continue...")
+    print("The gem is 6 steps away, so lets hope you have enough nightgoggle energy to get you there without the energy going down to 0%. Press ENTER to continue...")
     g= input(" ")
     print("--------------------------------------------------------------------------------------------------------------------")
-    for o in range(13):
-        full_bag.change()
-        print("Amount of night vision left:", full_bag.nightvision)
+    print("Percent amount of night vision starting: ",full_bag.nightvision)
+    print("Percent amount of night vision left: ",full_bag.nightvision-5)
+    print("Percent amount of night vision left: ",full_bag.nightvision-10)
+    print("Percent amount of night vision left: ",full_bag.nightvision-15)
+    print("Percent amount of night vision left: ",full_bag.nightvision-25)
+    print("Percent amount of night vision left: ",full_bag.nightvision-30)
+    print("Percent amount of night vision left: ",full_bag.nightvision-35)
+
     print("You made it to the gem safe and sound without starting the alarm, CONGRATULATIONS! But, that is not the only thing you have to worry about. In order to grab ahold of the gem, you have to solve a trivia quesition.")
     print("--------------------------------------------------------------------------------------------------------------------")
     print(East_room.riddle)
@@ -164,37 +175,42 @@ if first_supply == 'a':
         trivia_one = input("Do you live under a rock! Try it again: ")
     print("Nice job! You solved the riddle, and now you have the second gem! Press ENTER to grab the gem.")
     h=input(" ")
+
     full_bag.change()
-    print("Percent of gems collected in the mission: ", full_bag.gemscollected)
+    print("Percent of gems collected in the mission: ", 25+full_bag.gemscollected)
 
 #the second decision the player has to get through the lasers
 elif first_supply == 'b':
     print("--------------------------------------------------------------------------------------------------------------------")
     print("Wow, you are one risky spy, but hey I respect that. I guess that means you will be guessing where the lasers are located.")
     print("In order to get through the room without stepping on a laser, you have to guess the correct secret number three times in a row. If you don't, well...GAME OVER for you.")
-    guess_one = input("\nEnter a number from 0 to 5 for your guess on the secret number: ")
+    guess_one = int(input("\nEnter a number from 0 to 5 for your guess on the secret number: "))
+    secret_number = 3
     if guess != secret_number:
         print(f"I guess you were a bit too risky for the first mission. I'm sorry agent {x}, but you know what this means...\n\n\n\n\n\nGAME OVER")
+        sys.exit
 
     elif guess == secret_number:
-        print("I don't know wether that was luck or you just being a pure genious, but here comes round two: ")
+        print("I don't know whether that was luck or you just being a pure genious, but here comes round two: ")
         secret_number2= 5
-        guess_two =  input("\nEnter a number from 0 to 5 for your guess on the secret number: ")
+        guess_two =  int(input("\nEnter a number from 0 to 5 for your guess on the secret number: "))
         if guess_two != secret_number2:
             print(f"I guess you were a bit too risky for the first mission. I'm sorry agent {x}, but you know what this means...\n\n\n\n\n\nGAME OVER")
+            sys.exit()
 
         elif guess_two == secret_number2:
-            print("I don't know wether that was luck or you just being a pure genious, but here comes round three: ")
+            print("I don't know whether that was luck or you just being a pure genious, but here comes round three: ")
             secret_number3 = 1
-            guess_three = input("\nEnter a number from 0 to 5 for your guess on the secret number: ")
+            guess_three = int(input("\nEnter a number from 0 to 5 for your guess on the secret number: "))
             if guess_three != secret_number3:
                 print(f"I guess you were a bit too risky for the first mission. I'm sorry agent {x}, but you know what this means...\n\n\n\n\n\nGAME OVER")
-
+                sys.exit()
             elif guess_three == secret_number3:
                 print("I undersetimated your abilities. I always assume you will die but you keep proving me wrong. Keep up the good work.Press ENTER to grab the second gem.")
         i=input(" ")
+
         full_bag.change()
-        print("Percent of gems collected in the mission: ", full_bag.gemscollected)
+        print("Percent of gems collected in the mission: ", 25+full_bag.gemscollected)
 
 #Transition for the player to enter the South room
 print("--------------------------------------------------------------------------------------------------------------------")
@@ -213,9 +229,17 @@ if second_supply == 'a':
     print("The gem is only 8 steps away, so lets hope you have enough rope energy to get you there without the energy making it to 0%. Press ENTER to continue...")
     print("--------------------------------------------------------------------------------------------------------------------")
     l= input(" ")
-    for o in range(8):
-        full_bag.change()
-        print("Amount of rope left:", full_bag.rope)
+
+    print("Percent amount of rope starting:", full_bag.rope)
+    print("Percent amount of rope left: ",full_bag.rope-2)
+    print("Percent amount of rope left: ",full_bag.rope-4)
+    print("Percent amount of rope left: ",full_bag.rope-6)
+    print("Percent amount of rope left: ",full_bag.rope-8)
+    print("Percent amount of rope left: ",full_bag.rope-10)
+    print("Percent amount of rope left: ",full_bag.rope-12)
+    print("Percent amount of rope left: ",full_bag.rope-14)
+    print("Percent amount of rope left: ",full_bag.rope-16)
+
     print("You made it to the gem safe and sound without waking the security gaurd, CONGRATULATIONS! But, that is not the only thing you have to worry about. In order to grab ahold of the third gem, you have to solve yet another trivia quesition.")
     print("--------------------------------------------------------------------------------------------------------------------")
     print(South_room.riddle)
@@ -228,7 +252,7 @@ if second_supply == 'a':
 
     #gives how much of the missoin the player has completed
     full_bag.change()
-    print("Percent of gems collected in the mission: ", full_bag.gemscollected)
+    print("Percent of gems collected in the mission: ", 50+full_bag.gemscollected)
 
 #the other decision the player has if he does not want to use a supply
 elif second_supply == 'b':
@@ -236,23 +260,26 @@ elif second_supply == 'b':
     print("Wow, you are one risky spy, but hey I respect that. I guess that means you will be on the edge of meeting an awake gaurd.")
     print("In order to get through the room without making a noise, you have to guess the correct secret number three times in a row. If you don't, well...GAME OVER for you.")
     secret_number4 = 8
-    guess_four = input("\nEnter a number from 5 to 10 for your guess on the secret number: ")
+    guess_four = int(input("\nEnter a number from 5 to 10 for your guess on the secret number: "))
     if guess_four != secret_number4:
         print(f"I guess you were a bit too risky for the first mission. I'm sorry agent {x}, but you know what this means...\n\n\n\n\n\nGAME OVER")
+        sys.exit()
 
     elif guess_four == secret_number4:
         print("I don't know whether that was luck or you just being a pure genious, but here comes round two: ")
         secret_number5 = 10
-        guess_five =  input("\nEnter a number from 5 to 10 for your guess on the secret number: ")
+        guess_five = int(input("\nEnter a number from 5 to 10 for your guess on the secret number: "))
         if guess_five != secret_number5:
             print(f"I guess you were a bit too risky for the first mission. I'm sorry agent {x}, but you know what this means...\n\n\n\n\n\nGAME OVER")
+            sys.exit()
 
         elif guess_five == secret_number5:
             print("I don't know wether that was luck or you just being a pure genious, but here comes round three: ")
             secret_number6 = 7
-            guess_six = input("\nEnter a number from 5 to 10 for your guess on the secret number: ")
+            guess_six = int(input("\nEnter a number from 5 to 10 for your guess on the secret number: "))
             if guess_six != secret_number6:
                 print(f"I guess you were a bit too risky for the first mission. I'm sorry agent {x}, but you know what this means...\n\n\n\n\n\nGAME OVER")
+                sys.exit()
 
             elif guess_six == secret_number6:
                 print("I undersetimated your abilities. I always assume you will die but, you keep proving me wrong everytime. Keep up the good work.Press ENTER to grab the third gem.")
@@ -260,7 +287,7 @@ elif second_supply == 'b':
 
         #shows how much of the mission the player has completed
         full_bag.change()
-        print("Percent of gems collected in the mission: ", full_bag.gemscollected)
+        print("Percent of gems collected in the mission: ", 50+ full_bag.gemscollected)
 
 
 #Transition for the player to enter the West room
@@ -277,11 +304,31 @@ third_supply= input("Do you want to use a supply from the bag to make sure you d
 if third_supply == 'a':
     print("--------------------------------------------------------------------------------------------------------------------")
     print("I would have chosen the same thing. The perfect supply to use in this type of situation is the ",West_room.supplies,"It illuminates the path you are taking so you can see which direction you are heading in.")
-    print("The gem is really far, 40 steps to be precise.Let's hope you have enough flashlight energy to get you there before the energy gets to 0%. Press ENTER to continue...")
+    print("The gem is really far, 20 steps to be precise.Let's hope you have enough flashlight energy to get you there before the energy gets to 0%. Press ENTER to continue...")
     r= input(" ")
-    for o in range(9):
-        full_bag.change()
-        print("Amount of flashlgiht left:", full_bag.flashlight)
+
+    print("Percent amount of flashlgiht starting:", full_bag.flashlight)
+    print("Percent amount of flashlight left: ",full_bag.flashlight-1)
+    print("Percent amount of flashlight left: ",full_bag.flashlight-2)
+    print("Percent amount of flashlight left: ",full_bag.flashlight-3)
+    print("Percent amount of flashlight left: ",full_bag.flashlight-4)
+    print("Percent amount of flashlight left: ",full_bag.flashlight-5)
+    print("Percent amount of flashlight left: ",full_bag.flashlight-6)
+    print("Percent amount of flashlight left: ",full_bag.flashlight-7)
+    print("Percent amount of flashlight left: ",full_bag.flashlight-8)
+    print("Percent amount of flashlight left: ",full_bag.flashlight-9)
+    print("Percent amount of flashlight left: ",full_bag.flashlight-10)
+    print("Percent amount of flashlight left: ",full_bag.flashlight-11)
+    print("Percent amount of flashlight left: ",full_bag.flashlight-12)
+    print("Percent amount of flashlight left: ",full_bag.flashlight-13)
+    print("Percent amount of flashlight left: ",full_bag.flashlight-14)
+    print("Percent amount of flashlight left: ",full_bag.flashlight-15)
+    print("Percent amount of flashlight left: ",full_bag.flashlight-16)
+    print("Percent amount of flashlight left: ",full_bag.flashlight-17)
+    print("Percent amount of flashlight left: ",full_bag.flashlight-18)
+    print("Percent amount of flashlight left: ",full_bag.flashlight-19)
+    print("Percent amount of flashlight left: ",full_bag.flashlight-20)
+
     print("You made it to the gem safe and sound without breaking any artifacts, CONGRATULATIONS! But, that is not the only thing you have to worry about. In order to grab ahold of the fourth gem, you have to solve yet another trivia quesition.")
     print("--------------------------------------------------------------------------------------------------------------------")
     print(West_room.riddle)
@@ -294,7 +341,7 @@ if third_supply == 'a':
 
     #gives the percent of the mission completed by the player
     full_bag.change()
-    print("Percent of gems collected in the mission: ", full_bag.gemscollected)
+    print("Percent of gems collected in the mission: ", 75+full_bag.gemscollected)
 
 #allows the player to chose then how to pass the room without using a supply from the bag
 elif third_supply == 'b':
@@ -302,30 +349,78 @@ elif third_supply == 'b':
     print("Wow, you are one risky spy, but hey I respect that. I guess that means you will be having to feel your way forward and through the dark.")
     print("In order to get through the room without breaking anything, you have to guess the correct secret number three times in a row. If you don't, well...GAME OVER for you.")
     secret_number7 = 14
-    guess_seven = input("\nEnter a number from 10 to 15 for your guess on the secret number: ")
+    guess_seven = int(input("\nEnter a number from 10 to 15 for your guess on the secret number: "))
     if guess_seven != secret_number7:
         print(f"I guess you were a bit too risky for the first mission. I'm sorry agent {x}, but you know what this means...\n\n\n\n\n\nGAME OVER")
+        sys.exit()
 
     elif guess_seven == secret_number7:
         print("I don't know wether that was luck or you just being a pure genious, but here comes round two: ")
         secret_number8= 13
-        guess_eight =  input("\nEnter a number from 10 to 15 for your guess on the secret number: ")
+        guess_eight =  int(input("\nEnter a number from 10 to 15 for your guess on the secret number: "))
         if guess_eight != secret_number8:
             print(f"I guess you were a bit too risky for the first mission. I'm sorry agent {x}, but you know what this means...\n\n\n\n\n\nGAME OVER")
+            sys.exit()
 
         elif guess_eight == secret_number8:
             print("I don't know wether that was luck or you just being a pure genious, but here comes round three: ")
             secret_number9 = 11
-            guess_nine = input("\nEnter a number from 10 to 15 for your guess on the secret number: ")
+            guess_nine = int(input("\nEnter a number from 10 to 15 for your guess on the secret number: "))
             if guess_nine != secret_number9:
                 print(f"I guess you were a bit too risky for the first mission. I'm sorry agent {x}, but you know what this means...\n\n\n\n\n\nGAME OVER")
+                sys.exit()
+
             elif guess_nine == secret_number9:
                 print("I undersetimated your abilities. I always assume you will die but, you keep proving me wrong. And this time, it was the last gem of the mission! Press ENTER to grab the fourth gem.")
             t=input(" ")
 
             #shows the percent of how much of the mission the player has completed
             full_bag.change()
-            print("Percent of gems collected in the mission: ", full_bag.gemscollected)
+            print("Percent of gems collected in the mission: ", 75+full_bag.gemscollected)
+
+#the ending of the game, once all the gems have been collected
+
+print("--------------------------------------------------------------------------------------------------------------------")
+final_response= input(f"Can you hear that Agent {x}? I think it's the cops. They are coming in and trying to find you!\nWhich means of escape are you going to chose as the quickest?\na. hop out of the window and make a run for it\nb. find a place in the room to hide in and hopefully the cops don't see you\nc. sneak attack the police and make a run for it through the entrance of the museum\nd. give yourself into the cops\nenter only the letter: ")
+
+if final_response == 'a':
+    print("Now that's what I call the perfect way to escape. Hurry and jump out, the police are getting closer!Press ENTER to continue")
+    v= input(" ")
+    print("--------------------------------------------------------------------------------------------------------------------")
+    print(f"Well done Agent {x}, you have successfully completed your first mission without getting caught. You are now officially an honorary member of the NSOR society.")
+    next_level = input("\nDo you wish to continue your training with a second mission?\na. yes\nb. no\nenter only the letter: ")
+    if next_level =='a':
+        print("You make me proud, Agent. Congratulations with this win.\nUnfortunetly, the second mission does not come out until the summer of 2018.\nWish you the best of luck with your robbery journeys until then!")
+        sys.exit()
+    elif next_level == 'b':
+        print("I am still proud of you for making it this far. Congratulations with this win.\nPlease understand that it will be an honor to have such a skilled robber come back and help the organization.\Hopefully we see you in the future.")
+        sys.exit()
+
+elif final_response == 'b':
+    print("--------------------------------------------------------------------------------------------------------------------")
+    print("You were able to hide out for a few minutes, but the cops eventually found you hiding behind some boxes.\nLooks like you will be going to jail for a long time, buddy. I guess you weren't able to fully complete your mission.\nSorry but this means that you are not cut out to be a part of my organization.\n\n\n\n\n\nGAME OVER")
+    sys.exit()
+
+elif final_response == 'c':
+    print("--------------------------------------------------------------------------------------------------------------------")
+    print("Your first hit towards the cops worked, but it wasn't enough to distract them and run away.\nThe only weapon you have available in the bag is a chainsaw.")
+    attack= input("Do you wish to use the chainsaw?\na. Yes, I will not go down without a fight\nb. No, it's pointless because I am going to jail anyways\nenter only the letter: ")
+    if attack == 'a':
+        print("Percent of weaponry aka chainsaw source starting: ", full_bag.chainsaw)
+        print("Percent of weaponry aka chainsaw source left after one hit: ", full_bag.chainsaw-100)
+        print("Well, looks like you got to 0% quickly. Sorry, but you know that an end of a supply in the bag is a loss, even if you obtained all the jems.\n\n\n\n\n\nGAME OVER")
+        sys.exit()
+
+    elif attack == 'b':
+        print("I can't believe you were able to get this far and just decide to quit. That is the personality of a loser.\nYou do not deserve to be in my organization, you are too weak.\n\n\n\n\n\nGAME OVER")
+        sys.exit()
+
+elif final_response == 'd':
+    print("--------------------------------------------------------------------------------------------------------------------")
+    print("Looks like you will be going to jail for a long time, buddy. I guess you weren't able to fully complete your mission.\nSorry but this means that you are not cut out to be a part of my organization.\n\n\n\n\n\nGAME OVER")
+    sys.exit()
+
+
 
 
 
