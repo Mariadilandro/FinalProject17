@@ -7,7 +7,7 @@ organization, the player is given a mission by the narrator of the game. The mis
 imporant jems. The player is in the museum after closing time and has to go through four different exhibits in order to obtain each 
 gem. Each room consists of a different obstacle, including things such as invisible lasers and security guards. Throughout the 
 game, the player has to make sure to answer trivia questions properly, as well as choose the correct secret numbers. If not done
-properly, the player will loose. The player is also given a bag full of supplies that can help overcome obstacles. However, if the
+properly, the player will lose. The player is also given a bag full of supplies that can help overcome obstacles. However, if the
 player uses up all of one resource, then s/he will lose the game. The goal of the game is to try to get all four gems and escape 
 the museum before the police catches the player. By completing the mission properly, the player will officially become a part of
 the narrator's spy organization.
